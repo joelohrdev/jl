@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -44,9 +45,10 @@ class Team extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make(__('ID'), 'id')->sortable(),
+            ID::make(__('ID'), 'id')->hideFromIndex(),
             Number::make('Year')->placeholder('2020')->rules('required'),
             Text::make('Team Name', 'name')->rules('required'),
+            HasMany::make('Players'),
         ];
     }
 

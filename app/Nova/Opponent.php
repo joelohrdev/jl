@@ -3,20 +3,18 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Avatar;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Player extends Resource
+class Opponent extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Player::class;
+    public static $model = \App\Models\Opponent::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -46,9 +44,7 @@ class Player extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->hideFromIndex(),
-            Text::make('Name')->rules('required'),
-            Avatar::make('Profile Photo')->disk('public')->nullable()->prunable()->disableDownload()->maxWidth(100),
-            BelongsTo::make('Team')->searchable()->showCreateRelationButton(),
+            Text::make('Team Name', 'name')->rules('required'),
         ];
     }
 
