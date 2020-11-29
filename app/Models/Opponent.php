@@ -12,4 +12,9 @@ class Opponent extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function bats()
+    {
+        return $this->hasMany(Bat::class);
+    }
 }
