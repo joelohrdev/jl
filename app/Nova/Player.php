@@ -27,6 +27,8 @@ class Player extends Resource
 
     public static $group = 'Softball';
 
+    public static $with = ['team'];
+
     /**
      * The columns that should be searched.
      *
